@@ -1,0 +1,285 @@
+/* ---------- Couleurs (version claire) ----------
+   Pour passer en version foncée : changer ces valeurs et le fichier du logo. */
+:root {
+  --fond: #faf6ed;
+  --sable: #f1eadb;
+  --photo-vide: #ddd5c3;
+  --trait: #dccfb2;
+  --encre: #1b1b24;
+  --texte: #45454f;
+  --or: #d4a52a;
+  --or-fonce: #b98c1c;
+  --or-texte: #7d5a0c;
+  --titres: "Marcellus", Georgia, serif;
+  --corps: "Mulish", system-ui, sans-serif;
+  --largeur: 1120px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--corps);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--texte);
+  background: var(--fond);
+}
+
+h1, h2, h3 {
+  font-family: var(--titres);
+  font-weight: 400;
+  color: var(--encre);
+  line-height: 1.15;
+  margin: 0 0 .5em;
+  text-wrap: balance;
+}
+h1 { font-size: clamp(2.1rem, 5vw, 3rem); }
+h2 { font-size: clamp(1.7rem, 4vw, 2.25rem); }
+h3 { font-size: 1.375rem; }
+p { margin: 0 0 1em; }
+p:last-child { margin-bottom: 0; }
+a { color: var(--or-texte); }
+img { max-width: 100%; height: auto; }
+
+:focus-visible { outline: 3px solid var(--or-texte); outline-offset: 3px; }
+
+.conteneur { max-width: var(--largeur); margin: 0 auto; padding-left: 24px; padding-right: 24px; }
+.section { padding: clamp(56px, 8vw, 80px) 0; }
+.fond-sable { background: var(--sable); }
+
+.evitement {
+  position: absolute; left: -999px; top: 0;
+  background: var(--encre); color: #fff; padding: 10px 16px; z-index: 100;
+}
+.evitement:focus { left: 0; }
+
+/* ---------- Boutons et liens ---------- */
+.bouton {
+  display: inline-block;
+  padding: 13px 26px;
+  background: var(--or);
+  color: var(--encre);
+  border: 2px solid var(--or);
+  text-decoration: none;
+  font-weight: 700;
+  transition: background .2s, border-color .2s, color .2s;
+}
+.bouton:hover { background: var(--or-fonce); border-color: var(--or-fonce); }
+.bouton-contour { background: transparent; border-color: var(--encre); }
+.bouton-contour:hover { background: var(--encre); border-color: var(--encre); color: var(--fond); }
+.bouton-petit { padding: 10px 22px; }
+.lien { font-weight: 700; text-underline-offset: 4px; }
+.actions { display: flex; flex-wrap: wrap; gap: 14px; }
+
+/* ---------- En-tête ---------- */
+.entete {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--fond);
+  border-bottom: 1px solid var(--trait);
+}
+.entete-contenu {
+  position: relative;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px;
+  padding-top: 6px; padding-bottom: 6px;
+}
+.logo { display: block; line-height: 0; }
+.logo img { height: 84px; width: auto; }
+
+.menu { display: flex; align-items: center; gap: 28px; }
+.menu a:not(.bouton) {
+  color: var(--encre); text-decoration: none;
+  padding: 10px 0; border-bottom: 2px solid transparent;
+}
+.menu a:not(.bouton):hover { border-bottom-color: var(--trait); }
+.menu a[aria-current="page"] { font-weight: 700; border-bottom-color: var(--or); }
+
+.menu-bouton { display: none; background: none; border: 0; padding: 10px; cursor: pointer; }
+.menu-bouton span { display: block; width: 24px; height: 2px; background: var(--encre); margin: 5px 0; }
+
+@media (max-width: 760px) {
+  .logo img { height: 68px; }
+  .menu-bouton { display: block; }
+  .menu {
+    display: none;
+    position: absolute; left: 0; right: 0; top: 100%;
+    flex-direction: column; align-items: flex-start; gap: 10px;
+    padding: 18px 24px 22px;
+    background: var(--fond);
+    border-bottom: 1px solid var(--trait);
+  }
+  .menu.ouvert { display: flex; }
+}
+
+/* ---------- Haut de page et diaporama ---------- */
+.hero {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
+  gap: 56px;
+  align-items: center;
+  padding-top: clamp(40px, 7vw, 72px);
+  padding-bottom: clamp(48px, 7vw, 72px);
+}
+.accroche { font-size: 1.1875rem; margin-bottom: 28px; }
+
+.diapos {
+  position: relative;
+  aspect-ratio: 6 / 5;
+  background: var(--photo-vide);
+  overflow: hidden;
+}
+.diapo {
+  position: absolute; inset: 0;
+  background-image: var(--photo);
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+.diapo.active { opacity: 1; }
+
+.diaporama-commandes {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 14px;
+}
+.points { display: flex; gap: 8px; }
+.points button {
+  width: 28px; height: 28px; padding: 0;
+  background: none; border: 0; cursor: pointer;
+  display: flex; align-items: center;
+}
+.points button::before {
+  content: ""; width: 100%; height: 4px;
+  background: var(--trait);
+}
+.points button[aria-selected="true"]::before { background: var(--or); }
+
+.fleches { display: flex; gap: 8px; }
+.fleche {
+  width: 44px; height: 44px;
+  background: none; border: 1px solid var(--encre);
+  color: var(--encre); font-size: 1.1rem; cursor: pointer;
+}
+.fleche:hover { background: var(--encre); color: var(--fond); }
+
+/* ---------- Présentation et cartes ---------- */
+.intro {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 20px 40px;
+  font-size: 1.1875rem;
+  margin-bottom: 44px;
+}
+.intro p { margin: 0; }
+
+.cartes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 28px;
+}
+.carte { display: block; text-decoration: none; }
+.carte-photo {
+  display: block;
+  aspect-ratio: 10 / 9;
+  background: var(--photo-vide) var(--photo) center / cover;
+}
+.carte-titre {
+  display: inline-block; margin-top: 14px;
+  font-family: var(--titres); font-size: 1.5rem; color: var(--encre);
+  border-bottom: 2px solid transparent;
+  transition: border-color .2s;
+}
+.carte:hover .carte-titre { border-bottom-color: var(--or); }
+
+/* ---------- Blocs texte + photo ---------- */
+.deux-colonnes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+  gap: 40px 56px;
+  align-items: center;
+}
+.photo {
+  aspect-ratio: 4 / 3;
+  background: var(--photo-vide) var(--photo) center / cover;
+}
+
+/* ---------- Étapes ---------- */
+.etapes {
+  list-style: none; margin: 40px 0 0; padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+  gap: 32px;
+}
+.etapes li { border-top: 3px solid var(--or); padding-top: 16px; }
+.etape-numero {
+  display: block;
+  font-family: var(--titres); font-size: 2.5rem; line-height: 1;
+  color: var(--or-texte);
+  margin-bottom: 12px;
+}
+.etapes p { font-size: 1rem; }
+
+/* ---------- Avant / après ---------- */
+.comparateur {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--photo-vide);
+}
+.comparateur-image {
+  position: absolute; inset: 0;
+  background-image: var(--photo);
+  background-size: cover; background-position: center;
+}
+.comparateur-image.avant {
+  background-color: #c4c2bd;
+  clip-path: inset(0 calc(100% - var(--pos)) 0 0);
+}
+.comparateur-image span {
+  position: absolute; bottom: 12px;
+  padding: 4px 10px;
+  background: var(--encre); color: #fff;
+  font-size: .8rem; letter-spacing: .08em; text-transform: uppercase;
+}
+.comparateur-image.avant span { left: 12px; }
+.comparateur-image.apres span { right: 12px; }
+.comparateur-barre {
+  position: absolute; top: 0; bottom: 0; left: var(--pos);
+  width: 4px; margin-left: -2px; background: var(--or);
+}
+.comparateur-barre::after {
+  content: "\2194";
+  position: absolute; top: 50%; left: 50%;
+  width: 44px; height: 44px; margin: -22px 0 0 -22px;
+  display: grid; place-items: center;
+  background: var(--or); color: var(--encre);
+  border-radius: 50%; font-size: 1.1rem;
+}
+.comparateur input {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; margin: 0;
+  opacity: 0; cursor: ew-resize;
+}
+.comparateur:focus-within { outline: 3px solid var(--or-texte); outline-offset: 3px; }
+
+/* ---------- Appel au devis ---------- */
+.appel { max-width: 760px; text-align: center; }
+.appel .actions { justify-content: center; margin-top: 28px; }
+
+/* ---------- Pied de page ---------- */
+.pied { border-top: 1px solid var(--trait); font-size: .9375rem; }
+.pied-contenu {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 24px;
+  padding-top: 32px; padding-bottom: 32px;
+}
+.pied img { height: 76px; width: auto; }
+.pied p { margin: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .diapo { transition: none; }
+}
