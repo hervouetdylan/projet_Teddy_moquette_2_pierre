@@ -14,11 +14,11 @@
   --corps: "Mulish", system-ui, sans-serif;
   --largeur: 1120px;
 }
-
+ 
 *, *::before, *::after { box-sizing: border-box; }
-
+ 
 html { scroll-behavior: smooth; }
-
+ 
 body {
   margin: 0;
   font-family: var(--corps);
@@ -27,7 +27,7 @@ body {
   color: var(--texte);
   background: var(--fond);
 }
-
+ 
 h1, h2, h3 {
   font-family: var(--titres);
   font-weight: 400;
@@ -43,19 +43,19 @@ p { margin: 0 0 1em; }
 p:last-child { margin-bottom: 0; }
 a { color: var(--or-texte); }
 img { max-width: 100%; height: auto; }
-
+ 
 :focus-visible { outline: 3px solid var(--or-texte); outline-offset: 3px; }
-
+ 
 .conteneur { max-width: var(--largeur); margin: 0 auto; padding-left: 24px; padding-right: 24px; }
 .section { padding: clamp(56px, 8vw, 80px) 0; }
 .fond-sable { background: var(--sable); }
-
+ 
 .evitement {
   position: absolute; left: -999px; top: 0;
   background: var(--encre); color: #fff; padding: 10px 16px; z-index: 100;
 }
 .evitement:focus { left: 0; }
-
+ 
 /* ---------- Boutons et liens ---------- */
 .bouton {
   display: inline-block;
@@ -73,7 +73,7 @@ img { max-width: 100%; height: auto; }
 .bouton-petit { padding: 10px 22px; }
 .lien { font-weight: 700; text-underline-offset: 4px; }
 .actions { display: flex; flex-wrap: wrap; gap: 14px; }
-
+ 
 /* ---------- En-tête ---------- */
 .entete {
   position: sticky; top: 0; z-index: 50;
@@ -88,7 +88,7 @@ img { max-width: 100%; height: auto; }
 }
 .logo { display: block; line-height: 0; }
 .logo img { height: 84px; width: auto; }
-
+ 
 .menu { display: flex; align-items: center; gap: 28px; }
 .menu a:not(.bouton) {
   color: var(--encre); text-decoration: none;
@@ -96,10 +96,10 @@ img { max-width: 100%; height: auto; }
 }
 .menu a:not(.bouton):hover { border-bottom-color: var(--trait); }
 .menu a[aria-current="page"] { font-weight: 700; border-bottom-color: var(--or); }
-
+ 
 .menu-bouton { display: none; background: none; border: 0; padding: 10px; cursor: pointer; }
 .menu-bouton span { display: block; width: 24px; height: 2px; background: var(--encre); margin: 5px 0; }
-
+ 
 @media (max-width: 760px) {
   .logo img { height: 68px; }
   .menu-bouton { display: block; }
@@ -113,7 +113,7 @@ img { max-width: 100%; height: auto; }
   }
   .menu.ouvert { display: flex; }
 }
-
+ 
 /* ---------- Haut de page et diaporama ---------- */
 .hero {
   display: grid;
@@ -124,7 +124,7 @@ img { max-width: 100%; height: auto; }
   padding-bottom: clamp(48px, 7vw, 72px);
 }
 .accroche { font-size: 1.1875rem; margin-bottom: 28px; }
-
+ 
 .diapos {
   position: relative;
   aspect-ratio: 6 / 5;
@@ -133,14 +133,14 @@ img { max-width: 100%; height: auto; }
 }
 .diapo {
   position: absolute; inset: 0;
-  background-image: var(--photo);
-  background-size: cover;
-  background-position: center;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
   opacity: 0;
   transition: opacity 1s ease;
 }
 .diapo.active { opacity: 1; }
-
+ 
 .diaporama-commandes {
   display: flex; align-items: center; justify-content: space-between;
   margin-top: 14px;
@@ -156,7 +156,7 @@ img { max-width: 100%; height: auto; }
   background: var(--trait);
 }
 .points button[aria-selected="true"]::before { background: var(--or); }
-
+ 
 .fleches { display: flex; gap: 8px; }
 .fleche {
   width: 44px; height: 44px;
@@ -164,7 +164,7 @@ img { max-width: 100%; height: auto; }
   color: var(--encre); font-size: 1.1rem; cursor: pointer;
 }
 .fleche:hover { background: var(--encre); color: var(--fond); }
-
+ 
 /* ---------- Présentation et cartes ---------- */
 .intro {
   display: grid;
@@ -174,7 +174,7 @@ img { max-width: 100%; height: auto; }
   margin-bottom: 44px;
 }
 .intro p { margin: 0; }
-
+ 
 .cartes {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
@@ -193,7 +193,7 @@ img { max-width: 100%; height: auto; }
   transition: border-color .2s;
 }
 .carte:hover .carte-titre { border-bottom-color: var(--or); }
-
+ 
 /* ---------- Blocs texte + photo ---------- */
 .deux-colonnes {
   display: grid;
@@ -205,7 +205,7 @@ img { max-width: 100%; height: auto; }
   aspect-ratio: 4 / 3;
   background: var(--photo-vide) var(--photo) center / cover;
 }
-
+ 
 /* ---------- Étapes ---------- */
 .etapes {
   list-style: none; margin: 40px 0 0; padding: 0;
@@ -221,7 +221,7 @@ img { max-width: 100%; height: auto; }
   margin-bottom: 12px;
 }
 .etapes p { font-size: 1rem; }
-
+ 
 /* ---------- Avant / après ---------- */
 .comparateur {
   position: relative;
@@ -265,11 +265,11 @@ img { max-width: 100%; height: auto; }
   opacity: 0; cursor: ew-resize;
 }
 .comparateur:focus-within { outline: 3px solid var(--or-texte); outline-offset: 3px; }
-
+ 
 /* ---------- Appel au devis ---------- */
 .appel { max-width: 760px; text-align: center; }
 .appel .actions { justify-content: center; margin-top: 28px; }
-
+ 
 /* ---------- Pied de page ---------- */
 .pied { border-top: 1px solid var(--trait); font-size: .9375rem; }
 .pied-contenu {
@@ -279,7 +279,113 @@ img { max-width: 100%; height: auto; }
 }
 .pied img { height: 76px; width: auto; }
 .pied p { margin: 0; }
-
+ 
+/* ---------- Pages intérieures : introduction ---------- */
+.page-intro {
+  padding-top: clamp(48px, 7vw, 72px);
+  padding-bottom: clamp(32px, 5vw, 48px);
+}
+.page-intro p { max-width: 62ch; font-size: 1.1875rem; }
+ 
+/* ---------- Réalisations ---------- */
+.projet-infos { color: var(--or-texte); font-weight: 600; }
+.projet-contenu {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+  gap: 24px;
+  align-items: start;
+  margin-top: 28px;
+}
+.galerie {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.galerie-large {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
+  margin-top: 28px;
+}
+.galerie a {
+  display: block;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: var(--photo-vide);
+}
+.galerie img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .3s ease;
+}
+.galerie a:hover img { transform: scale(1.04); }
+ 
+/* ---------- Visionneuse (photo agrandie) ---------- */
+.visionneuse {
+  border: 0; padding: 0;
+  background: transparent;
+  max-width: min(92vw, 1200px);
+  max-height: 92vh;
+  overflow: visible;
+}
+.visionneuse::backdrop { background: rgba(20, 20, 26, .9); }
+.visionneuse img {
+  display: block;
+  max-width: 100%; max-height: 84vh;
+  width: auto; height: auto;
+  margin: 0 auto;
+}
+.visionneuse-legende { color: #fff; text-align: center; margin: 12px 0 0; }
+.visionneuse-fermer {
+  position: fixed; top: 16px; right: 16px;
+  width: 48px; height: 48px;
+  background: var(--fond); color: var(--encre);
+  border: 0; font-size: 1.6rem; line-height: 1; cursor: pointer;
+}
+ 
+/* ---------- Coloris et modèles ---------- */
+.nuancier {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 170px), 1fr));
+  gap: 28px 24px;
+  margin: 36px 0 0; padding: 0; list-style: none;
+}
+.modeles {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+}
+.echantillon { margin: 0; }
+.echantillon-photo {
+  display: block;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: var(--photo-vide);
+}
+.modeles .echantillon-photo { aspect-ratio: 4 / 3; }
+.echantillon-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.echantillon figcaption {
+  margin-top: 12px;
+  font-family: var(--titres); font-size: 1.25rem; color: var(--encre);
+}
+.echantillon figcaption small {
+  display: block;
+  font-family: var(--corps); font-size: .9375rem; color: var(--texte);
+}
+.note { font-size: .9375rem; margin-top: 28px; }
+ 
+/* ---------- Mentions légales ---------- */
+.legal { max-width: 760px; padding-bottom: clamp(56px, 8vw, 80px); }
+.legal h2 {
+  font-size: 1.6rem;
+  margin-top: 2.2em;
+  padding-top: 18px;
+  border-top: 1px solid var(--trait);
+}
+.legal h2:first-child { margin-top: 0; }
+.legal h3 { font-size: 1.2rem; margin-top: 1.6em; }
+ 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .diapo { transition: none; }
