@@ -14,7 +14,7 @@
   <meta property="og:description" content="Terrasses, plages de piscine, escaliers, balcons et allées en moquette de pierre. Devis gratuit.">
   <meta property="og:image" content="https://www.exemple.fr/images/accueil-1.jpg">
 
-  <link rel="icon" href="images/logo-rce.png">
+  <link rel="icon" href="logo_fond_foncee.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Mulish:wght@400;600;700&display=swap">
@@ -47,7 +47,7 @@
   <header class="entete">
     <div class="conteneur entete-contenu">
       <a class="logo" href="index.html">
-        <img src="images/logo-rce.png" alt="RCE, rénovation création entretien" width="1536" height="1024">
+        <img src="logo_fond_foncee.jpg" alt="RCE, rénovation création entretien" width="1536" height="1024">
       </a>
       <button class="menu-bouton" aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu">
         <span></span><span></span><span></span>
@@ -77,10 +77,10 @@
       <!-- DIAPORAMA : une <div class="diapo"> par photo, à déposer dans images/ -->
       <div class="diaporama" aria-roledescription="carrousel" aria-label="Nos réalisations en images">
         <div class="diapos">
-          <div class="diapo active" style="--photo:url('images/accueil-1.jpg')" role="img" aria-label="Terrasse en moquette de pierre près de Nantes"></div>
-          <div class="diapo" style="--photo:url('images/accueil-2.jpg')" role="img" aria-label="Plage de piscine en moquette de pierre"></div>
-          <div class="diapo" style="--photo:url('images/accueil-3.jpg')" role="img" aria-label="Allée en moquette de pierre"></div>
-          <div class="diapo" style="--photo:url('images/accueil-4.jpg')" role="img" aria-label="Escalier extérieur en moquette de pierre"></div>
+          <img class="diapo active" src="photo_projet_terminé/projet_4_après (2).jpg" alt="Terrasse en moquette de pierre près de Nantes">
+            <img class="diapo" src="photo_projet_terminé/Projet_3_après.jpg" alt="Plage de piscine en moquette de pierre">
+            <img class="diapo" src="photo_projet_terminé/projet_2_après (2).jpg" alt="Allée en moquette de pierre">
+            <img class="diapo" src="photo_projet_terminé/projet_1_après (2).jpg" alt="Escalier extérieur en moquette de pierre">
         </div>
         <div class="diaporama-commandes">
           <div class="points" role="tablist" aria-label="Choisir une photo"></div>
@@ -110,7 +110,7 @@
           </a>
           <a class="carte" href="realisations.html">
             <span class="carte-photo" style="--photo:url('images/prestation-allee.jpg')"></span>
-            <span class="carte-titre">Allées, escaliers, balcons</span>
+            <span class="carte-titre">Allées, escaliers</span>
           </a>
         </div>
       </div>
@@ -122,7 +122,7 @@
         <div class="photo" style="--photo:url('images/nuancier.jpg')" role="img" aria-label="Nuancier de teintes et de granulats de moquette de pierre"></div>
         <div>
           <h2>Une finition unique, pensée pour votre extérieur</h2>
-          <p>Chaque projet mérite une attention particulière. Nous vous accompagnons dans le choix des teintes, des granulats et des finitions afin de créer un résultat en parfaite cohérence avec l’architecture de votre maison et vos envies.</p>
+          <p>Chaque projet mérite une attention particulière. Nous vous accompagnons dans le choix des couleurs, des granulats et des finitions afin de créer un résultat en parfaite cohérence avec l’architecture de votre maison et vos envies.</p>
           <p>L’objectif : obtenir un extérieur esthétique, harmonieux et durable, avec une finition soignée jusque dans les moindres détails.</p>
           <p><a class="lien" href="coloris-modeles.html">Voir les coloris et modèles</a></p>
         </div>
@@ -160,19 +160,21 @@
 
     <!-- AVANT / APRÈS -->
     <section class="section">
-      <div class="conteneur deux-colonnes">
-        <div>
-          <h2>L’élégance jusque dans les détails</h2>
-          <p>Plus qu’un simple revêtement, la moquette de pierre permet de transformer un extérieur et de lui donner une véritable identité.</p>
-          <p><a class="lien" href="realisations.html">Tous les chantiers en avant/après</a></p>
+        <div class="conteneur deux-colonnes">
+            <div>
+                <h2>L’élégance jusque dans les détails</h2>
+                <p>Plus qu’un simple revêtement, la moquette de pierre permet de transformer un extérieur et de lui donner une véritable identité.</p>
+                <p><a class="lien" href="realisations.html">Tous les chantiers en avant/après</a></p>
+            </div>
+            <div class="comparateur" style="--pos:50%">
+                <img class="comparateur-image apres" src="photo_projet_terminé/projet_2_après (2).jpg" alt="Terrasse après la pose de la moquette de pierre">
+                <img class="comparateur-image avant" src="photo_projet_terminé/projet_2_avant (2).jpg" alt="Terrasse avant les travaux">
+                <span class="comparateur-etiquette etiquette-avant">Avant</span>
+                <span class="comparateur-etiquette etiquette-apres">Après</span>
+                <div class="comparateur-barre" aria-hidden="true"></div>
+                <input type="range" min="0" max="100" value="50" aria-label="Comparer avant et après">
+            </div>
         </div>
-        <div class="comparateur" style="--pos:50%">
-          <div class="comparateur-image apres" style="--photo:url('images/chantier-1-apres.jpg')"><span>Après</span></div>
-          <div class="comparateur-image avant" style="--photo:url('images/chantier-1-avant.jpg')"><span>Avant</span></div>
-          <div class="comparateur-barre" aria-hidden="true"></div>
-          <input type="range" min="0" max="100" value="50" aria-label="Comparer avant et après">
-        </div>
-      </div>
     </section>
 
     <!-- APPEL AU DEVIS -->
@@ -182,7 +184,7 @@
         <p>Nous étudions votre espace et vos envies afin de vous proposer une réalisation sur mesure, pensée pour valoriser durablement votre extérieur.</p>
         <div class="actions">
           <a class="bouton" href="contact.html">Demander un devis</a>
-          <a class="bouton bouton-contour" href="tel:[TÉLÉPHONE]">[TÉLÉPHONE]</a>
+          <a class="bouton bouton-contour" href="tel:[TÉLÉPHONE]">0676177079</a>
         </div>
       </div>
     </section>
@@ -191,7 +193,7 @@
 
   <footer class="pied">
     <div class="conteneur pied-contenu">
-      <img src="images/logo-rce.png" alt="RCE" width="1536" height="1024">
+      <img src="logo_fond_foncee.jpg" alt="RCE" width="1536" height="1024">
       <p>[VILLE], Loire-Atlantique<br>Nantes et alentours, dans un rayon de [XX] km<br><a href="tel:[TÉLÉPHONE]">[TÉLÉPHONE]</a> · <a href="mailto:[E-MAIL]">[E-MAIL]</a></p>
       <p><a href="mentions-legales.html">Mentions légales</a><br>SIRET [NUMÉRO]</p>
     </div>
