@@ -183,8 +183,10 @@ img { max-width: 100%; height: auto; }
 .carte { display: block; text-decoration: none; }
 .carte-photo {
   display: block;
+  width: 100%;
   aspect-ratio: 10 / 9;
-  background: var(--photo-vide) var(--photo) center / cover;
+  object-fit: cover;
+  background: var(--photo-vide);
 }
 .carte-titre {
   display: inline-block; margin-top: 14px;
@@ -202,8 +204,11 @@ img { max-width: 100%; height: auto; }
   align-items: center;
 }
 .photo {
+  display: block;
+  width: 100%;
   aspect-ratio: 4 / 3;
-  background: var(--photo-vide) var(--photo) center / cover;
+  object-fit: cover;
+  background: var(--photo-vide);
 }
 
 /* ---------- Étapes ---------- */
@@ -296,6 +301,10 @@ img { max-width: 100%; height: auto; }
   align-items: start;
   margin-top: 28px;
 }
+/* Un projet sur deux : photo avant/après à droite (seulement quand il y a 2 colonnes) */
+@media (min-width: 800px) {
+  .projet-inverse > :first-child { order: 2; }
+}
 .galerie {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -375,6 +384,15 @@ img { max-width: 100%; height: auto; }
 }
 .note { font-size: .9375rem; margin-top: 28px; }
 
+/* Coloris : 5 par ligne sur ordinateur (20 coloris = 4 lignes) */
+.nuancier:not(.motifs) { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+@media (max-width: 700px) {
+  .nuancier:not(.motifs) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 420px) {
+  .nuancier:not(.motifs) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
 /* Motifs décoratifs : dessins noirs sur fond blanc, affichés en entier */
 .motifs {
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 140px), 1fr));
@@ -410,6 +428,27 @@ img { max-width: 100%; height: auto; }
   text-decoration: none;
 }
 .contact-tel:hover { color: var(--or-texte); }
+
+/* ---------- Avis clients ---------- */
+.avis-resume { font-size: 1.125rem; margin-bottom: 32px; }
+.etoiles { color: var(--or); letter-spacing: 2px; }
+.avis-resume .etoiles { margin-right: 8px; }
+.avis-grille {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 24px;
+}
+.avis {
+  margin: 0;
+  padding: 24px;
+  background: var(--sable);
+  border-top: 3px solid var(--or);
+  display: flex; flex-direction: column; gap: 12px;
+}
+.avis p { margin: 0; font-style: italic; }
+.avis footer { margin-top: auto; font-weight: 700; color: var(--encre); }
+.fond-sable .avis { background: var(--fond); }
+.avis-actions { margin-top: 32px; align-items: center; }
 
 /* ---------- Mentions légales ---------- */
 .legal { max-width: 760px; padding-bottom: clamp(56px, 8vw, 80px); }
