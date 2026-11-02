@@ -35,8 +35,9 @@ jobs:
           # .git, le script Python, etc. restent dans le dépôt.
           cat > envoi.lftp <<'FIN'
           set sftp:connect-program "ssh -a -x -o StrictHostKeyChecking=yes"
+          open --env-password -u rcemoqq sftp://ftp.cluster129.hosting.ovh.net
           set net:max-retries 2
           mirror --reverse --verbose --exclude '^\.git/' --exclude '^\.github/' --exclude '^photo_projet' --exclude '^coloris/' --exclude '^motif' --exclude '^logo/' --exclude '^sauvegarde-html/' --exclude '\.py$' --exclude '^README\.md$' --exclude '^htaccess\.txt$' --exclude '^envoi\.lftp$' ./ www/
           quit
           FIN
-          lftp --env-password -u rcemoqq sftp://ftp.cluster129.hosting.ovh.net -f envoi.lftp
+          lftp -f envoi.lftp
