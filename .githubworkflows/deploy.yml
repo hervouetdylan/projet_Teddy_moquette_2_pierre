@@ -1,0 +1,42 @@
+# Met le site en ligne chez OVH à chaque push sur la branche main.
+# À placer dans le projet : .github/workflows/deploy.yml
+# Secrets à créer sur GitHub (Settings > Secrets and variables > Actions) :
+#   SFTP_PASSWORD    : mot de passe SFTP de l'hébergement
+#   SFTP_KNOWN_HOSTS : résultat de « ssh-keyscan ftp.cluster129.hosting.ovh.net »
+
+name: Mise en ligne OVH
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:   # permet aussi de lancer l'envoi à la main depuis GitHub
+
+jobs:
+  deploiement:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Installer lftp
+        run: sudo apt-get update && sudo apt-get install -y lftp
+
+      - name: Déclarer la clé du serveur
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SFTP_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
+
+      - name: Envoyer le site dans www
+        env:
+          LFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
+        run: |
+          # Seuls les fichiers du site partent : les dossiers d'origine,
+          # .git, le script Python, etc. restent dans le dépôt.
+          cat > envoi.lftp <<'FIN'
+          set sftp:connect-program "ssh -a -x -o StrictHostKeyChecking=yes"
+          set net:max-retries 2
+          mirror --reverse --verbose --exclude '^\.git/' --exclude '^\.github/' --exclude '^photo_projet' --exclude '^coloris/' --exclude '^motif' --exclude '^logo/' --exclude '^sauvegarde-html/' --exclude '\.py$' --exclude '^README\.md$' --exclude '^htaccess\.txt$' --exclude '^envoi\.lftp$' ./ www/
+          quit
+          FIN
+          lftp --env-password -u rcemoqq sftp://ftp.cluster129.hosting.ovh.net -f envoi.lftp

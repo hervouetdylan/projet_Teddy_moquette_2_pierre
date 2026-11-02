@@ -62,6 +62,31 @@ if (diaporama) {
   relancer();
 }
 
+// ---------- Visionneuse : agrandir une photo au clic ----------
+const visionneuse = document.querySelector('.visionneuse');
+
+if (visionneuse && typeof visionneuse.showModal === 'function') {
+  const grande = visionneuse.querySelector('img');
+  const legende = visionneuse.querySelector('.visionneuse-legende');
+
+  document.querySelectorAll('.zoomable').forEach((lien) => {
+    lien.addEventListener('click', (e) => {
+      e.preventDefault();
+      const vignette = lien.querySelector('img');
+      grande.src = lien.href;
+      grande.alt = vignette ? vignette.alt : '';
+      legende.textContent = vignette ? vignette.alt : '';
+      visionneuse.showModal();
+    });
+  });
+
+  visionneuse.querySelector('.visionneuse-fermer').addEventListener('click', () => visionneuse.close());
+  // Fermer en cliquant à côté de la photo
+  visionneuse.addEventListener('click', (e) => {
+    if (e.target === visionneuse) visionneuse.close();
+  });
+}
+
 // ---------- Curseur avant / après ----------
 document.querySelectorAll('.comparateur').forEach((comparateur) => {
   const curseur = comparateur.querySelector('input');
