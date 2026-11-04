@@ -274,6 +274,7 @@ img { max-width: 100%; height: auto; }
 /* ---------- Appel au devis ---------- */
 .appel { max-width: 760px; text-align: center; }
 .appel .actions { justify-content: center; margin-top: 28px; }
+.appel .zone { font-size: .9375rem; margin-top: 20px; }
 
 /* ---------- Pied de page ---------- */
 .pied { border-top: 1px solid var(--trait); font-size: .9375rem; }
@@ -449,6 +450,16 @@ img { max-width: 100%; height: auto; }
 .avis footer { margin-top: auto; font-weight: 700; color: var(--encre); }
 .fond-sable .avis { background: var(--fond); }
 .avis-actions { margin-top: 32px; align-items: center; }
+
+/* ---------- Questions fréquentes ---------- */
+.faq { max-width: 760px; padding-bottom: clamp(56px, 8vw, 80px); }
+.faq h2 {
+  font-size: 1.45rem;
+  margin-top: 1.8em;
+  padding-top: 18px;
+  border-top: 1px solid var(--trait);
+}
+.faq h2:first-child { margin-top: 0; }
 
 /* ---------- Mentions légales ---------- */
 .legal { max-width: 760px; padding-bottom: clamp(56px, 8vw, 80px); }
