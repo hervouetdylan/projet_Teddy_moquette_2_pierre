@@ -472,6 +472,27 @@ img { max-width: 100%; height: auto; }
 .legal h2:first-child { margin-top: 0; }
 .legal h3 { font-size: 1.2rem; margin-top: 1.6em; }
 
+/* ---------- Pages prestations (terrasse, allée, piscine) ---------- */
+.ariane { font-size: .9375rem; padding-top: 20px; margin: 0; }
+.ariane a { text-underline-offset: 3px; }
+.surtitre { text-transform: uppercase; letter-spacing: .14em; font-size: .8125rem; font-weight: 700; color: var(--or-texte); margin-bottom: 12px; }
+.atouts {
+  list-style: none; margin: 36px 0 0; padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 32px;
+}
+.atouts li { border-top: 3px solid var(--or); padding-top: 16px; }
+.atouts p { font-size: 1rem; }
+.chantiers { display: grid; gap: 48px; margin-top: 36px; }
+.chantier .galerie { margin-top: 20px; }
+.chantier .galerie img { aspect-ratio: 1; }
+.plus-loin { margin-top: 32px; }
+.faq-courte { max-width: 760px; }
+.faq-courte h3 { font-size: 1.25rem; margin-top: 1.6em; padding-top: 16px; border-top: 1px solid var(--trait); }
+.faq-courte h3:first-of-type { margin-top: 28px; }
+.autres { margin-top: 36px; }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .diapo { transition: none; }
